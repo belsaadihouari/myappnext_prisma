@@ -1,12 +1,9 @@
 import prisma from "@/util/prismaClient";
 
 export default async function handlergetproduct(req, res) {
-  if (req.method === "POST") {
+  if (req.method === "GET") {
     try {
-      const getProduct = await prisma.user.findMany({
-        where: { id: req.body.id },
-        select: { product: true },
-      });
+      const getProduct = await prisma.product.findMany();
       return res.json(getProduct);
     } catch (error) {
       return res.json({ error: "internal server error" });
