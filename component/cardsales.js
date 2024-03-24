@@ -8,9 +8,9 @@ const Cardsales = ({title,price,id,salemen}) => {
   const controls = useAnimation();
   const router = useRouter()
  async function handlerdelete(id){
-const res = await fetch(`oductone/${id}`)
+const res = await fetch(`http://localhost:3000/api/delete/deletesale/${id}`)
 const data = await res.json();
-router.push('/products')
+router.push('/sales')
 
   }
   useEffect(() => {

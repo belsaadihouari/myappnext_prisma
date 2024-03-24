@@ -53,6 +53,19 @@ function ResponsiveDrawer(props) {
     
   }
 
+  function handlenavigateadd (text){
+    if (text === "Add User") {
+      router.push(`/adduser`)
+    }
+    // if (text === "Products") {
+    //   router.push(`/products`)
+    // }
+    // if (text === "sales") {
+    //   router.push(`/sales`)
+    // }
+    
+  }
+
   const drawer = (
     <div>
       <Toolbar />
@@ -74,7 +87,9 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {['Add User', 'Add Product', 'Add Sale'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={text} onClick={() => {
+            handlenavigateadd(text)
+          }} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
