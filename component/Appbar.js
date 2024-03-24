@@ -13,6 +13,7 @@ const Appbar = ({ drawerWidth, showDrawer }) => {
     <AppBar
       sx={{
         width: { sm: `calc(100% - ${drawerWidth}px)` },
+        height:"70px",
         ml: { xs: 0, sm: `${drawerWidth}px` },
       }}
       position="static"

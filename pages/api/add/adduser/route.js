@@ -26,6 +26,8 @@ export default async function handlerAdd(req, res) {
       return res.json({ newUser });
     } catch (error) {
       return res.json({ error: "internal server error" });
+    } finally {
+      await prisma.$disconnect();
     }
   }
 }

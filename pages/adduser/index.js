@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Card from "@/component/card";
-
+import FormUser from "@/component/formUser";
+import formusercss from "@/styles/formUser.module.css"
 export default function Home({ posts }) {
   return (
     <>
@@ -11,24 +11,16 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container">
-        {posts.map((item, index) => (
-          <Card
-            key={index}
-            id={item.id}
-            username={item.username}
-            email={item.email}
-          />
-        ))}
+      <div className={formusercss.containerform}>
+        <FormUser />
       </div>
     </>
   );
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/get/getmany/route");
+  const res = await fetch("http://localhost:3000/api/get/getsalesmany/route");
   const posts = await res.json();
-
   return {
     props: {
       posts,

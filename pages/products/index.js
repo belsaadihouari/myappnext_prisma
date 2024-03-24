@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Card from "@/component/card";
+import Cardproduct from "@/component/cardproduct";
 
 export default function Home({ posts }) {
   return (
@@ -13,11 +13,11 @@ export default function Home({ posts }) {
 
       <div className="container">
         {posts.map((item, index) => (
-          <Card
+          <Cardproduct
             key={index}
             id={item.id}
-            username={item.username}
-            email={item.email}
+            title={item.title}
+            descrip={item.description}
           />
         ))}
       </div>
@@ -26,9 +26,8 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/get/getmany/route");
+  const res = await fetch("http://localhost:3000/api/get/getproductmany/route");
   const posts = await res.json();
-
   return {
     props: {
       posts,

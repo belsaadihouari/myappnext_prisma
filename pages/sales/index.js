@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Card from "@/component/card";
+import Cardsales from "@/component/cardsales";
 
 export default function Home({ posts }) {
   return (
@@ -13,11 +13,12 @@ export default function Home({ posts }) {
 
       <div className="container">
         {posts.map((item, index) => (
-          <Card
+          <Cardsales
             key={index}
             id={item.id}
-            username={item.username}
-            email={item.email}
+            title={item.productTitle}
+            price={item.price}
+            salemen={item.username}
           />
         ))}
       </div>
@@ -26,9 +27,8 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/get/getmany/route");
+  const res = await fetch("http://localhost:3000/api/get/getsalesmany/route");
   const posts = await res.json();
-
   return {
     props: {
       posts,

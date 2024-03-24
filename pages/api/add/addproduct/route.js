@@ -10,9 +10,13 @@ export default async function handlerAddProduct(req, res) {
           createdBy: req.body.createdBy,
         },
       });
+      
       return res.json(addProduct);
     } catch {
+      
       return res.json({ message: "internal server error" });
+    }finally {
+      await prisma.$disconnect();
     }
   }
 }

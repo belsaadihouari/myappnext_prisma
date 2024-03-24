@@ -9,6 +9,8 @@ export default async function handlerget(req, res) {
       return res.json({ userget });
     } catch {
       res.json({ error: "internal server error" });
+    }finally {
+      await prisma.$disconnect();
     }
   }
 }

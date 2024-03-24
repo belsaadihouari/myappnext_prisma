@@ -4,16 +4,15 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/navigation";
 import { motion, useAnimation } from "framer-motion";
-const Card = ({username,email,id}) => {
+const CardProduct = ({title,descrip,id}) => {
   const controls = useAnimation();
   const router = useRouter()
  async function handlerdelete(id){
-const res = await fetch(`http://localhost:3000/api/delete/deleteone/${id}`)
+const res = await fetch(`http://localhost:3000/api/delete/deleteproductone/${id}`)
 const data = await res.json();
-router.push('/')
+router.push('/products')
 
   }
-
   useEffect(() => {
     controls.start({
       opacity: 1,
@@ -21,6 +20,7 @@ router.push('/')
       transform: "translateY(0%)",
     });
    }, []);
+  
   return (
     <motion.div
         
@@ -44,12 +44,12 @@ router.push('/')
         <CloseIcon className="crossicon" />
       </IconButton>
    <div className="containerdetails">
-      <h3>{username}</h3>
-      <h6 >{email}</h6>
+      <h3>{title}</h3>
+      <h6 >{descrip}</h6>
       </div>
     </div>
     </motion.div>
   );
 };
 
-export default Card;
+export default CardProduct;

@@ -17,9 +17,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import card from "@/component/card"
+import { useRouter } from "next/navigation";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+  const router = useRouter()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -38,14 +40,28 @@ function ResponsiveDrawer(props) {
       setMobileOpen(!mobileOpen);
     }
   };
+  function handlenavigate (text){
+    if (text === "User") {
+      router.push(`/`)
+    }
+    if (text === "Products") {
+      router.push(`/products`)
+    }
+    if (text === "sales") {
+      router.push(`/sales`)
+    }
+    
+  }
 
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        {['User', 'Products', 'Sales'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {['User', 'Products', 'sales'].map((text, index) => (
+          <ListItem key={text} onClick={() => {
+            handlenavigate(text)
+          }} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

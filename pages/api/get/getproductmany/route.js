@@ -7,6 +7,8 @@ export default async function handlergetproduct(req, res) {
       return res.json(getProduct);
     } catch (error) {
       return res.json({ error: "internal server error" });
+    }finally {
+      await prisma.$disconnect();
     }
   }
 }
