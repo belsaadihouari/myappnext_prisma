@@ -21,6 +21,7 @@ export default async function handlerAdd(req, res) {
           username: req.body.username,
           email: req.body.email,
           password: hachPassword,
+          isAdmin:req.body.isAdmin,
         },
       });
       return res.json({ newUser });

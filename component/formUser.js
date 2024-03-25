@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { motion, useAnimation } from "framer-motion";
 
 const FormUser = () => {
+
   const controls = useAnimation();
   const router = useRouter();
   const username = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   const isadmin = useRef(null);
+  
   useEffect(() => {
     controls.start({
       opacity: 1,
@@ -18,6 +20,7 @@ const FormUser = () => {
       transform: "translateX(0%)",
     });
   }, []);
+  
 
   async function handleradd(eo) {
     eo.preventDefault();
@@ -25,7 +28,8 @@ const FormUser = () => {
       const username1 = username.current.value;
       const email1 = email.current.value;
       const password1 = password.current.value;
-      const isadmin1 = isadmin.current.value;
+      const isadmin1 = (isadmin.current.value="on"? true:false);
+      
       const res = await fetch("http://localhost:3000/api/add/adduser/route", {
         method: "POST",
         credentials: "include",
@@ -46,6 +50,8 @@ const FormUser = () => {
       return res.json["internal server error"];
     }
   }
+
+  
 
   return (
     <>
@@ -108,6 +114,7 @@ const FormUser = () => {
           <div className={`${formusercss.containercheck}`}>
             <label htmlFor="checkbox">is Admin ? *</label>
             <input
+            
               ref={isadmin}
               placeholder=""
               type="checkbox"
