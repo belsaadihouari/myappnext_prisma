@@ -1,5 +1,5 @@
 import Head from "next/head";
-import FormUser from "@/component/formUser";
+import Formsales from "@/component/formsales";
 import formusercss from "@/styles/formUser.module.css";
 export default function Home({ posts }) {
   return (
@@ -12,7 +12,7 @@ export default function Home({ posts }) {
       </Head>
 
       <div className={formusercss.containerform}>
-        <FormUser />
+        <Formsales />
       </div>
     </>
   );

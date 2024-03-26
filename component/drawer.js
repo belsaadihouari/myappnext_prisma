@@ -57,12 +57,12 @@ function ResponsiveDrawer(props) {
     if (text === "Add User") {
       router.push(`/adduser`)
     }
-    // if (text === "Products") {
-    //   router.push(`/products`)
-    // }
-    // if (text === "sales") {
-    //   router.push(`/sales`)
-    // }
+    if (text === "Add Product") {
+      router.push(`/addproduct`)
+    }
+    if (text === "Add Sale") {
+      router.push(`/addsale`)
+    }
     
   }
 

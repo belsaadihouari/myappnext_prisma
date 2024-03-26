@@ -20,7 +20,7 @@ router.push('/')
       scale: 1,
       transform: "translateY(0%)",
     });
-   }, []);
+   }, [controls]);
   return (
     <motion.div
         
@@ -46,6 +46,7 @@ router.push('/')
    <div className="containerdetails">
       <h3>{username}</h3>
       <h6 >{email}</h6>
+      <h6>id: {id}</h6>
       </div>
     </div>
     </motion.div>
